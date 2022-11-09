@@ -15,6 +15,13 @@
         android:theme="@style/Theme.Contribution"
         tools:targetApi="31">
         <activity
+            android:name="ie.wit.contribution.activities.Report"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".activities.Contribute"
             android:exported="true">
             <intent-filter>
