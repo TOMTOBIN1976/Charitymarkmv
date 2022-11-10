@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/contributeFragment">
+
+    <fragment
+        android:id="@+id/contributeFragment"
+        android:name="ie.wit.contribution.ContributeFragment"
+        android:label="fragment_contribute"
+        tools:layout="@layout/fragment_contribute" />
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="ie.wit.contribution.ReportFragment"
+        android:label="fragment_report"
+        tools:layout="@layout/fragment_report" />
+</navigation>

@@ -73,4 +73,11 @@ class Contribute : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        totalDonated = app.contributionsStore.findAll().sumOf { it.amount }
+        contributeLayout.progressBar.progress = totalDonated
+        contributeLayout.totalSoFar.text = getString(R.string.totalSoFar,totalDonated)
+    }
+
 }
