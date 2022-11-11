@@ -51,7 +51,7 @@ class ContributeFragment : Fragment() {
     }
 
     fun setButtonListener(layout: FragmentContributeBinding) {
-        layout.donateButton.setOnClickListener {
+        layout.contributeButton.setOnClickListener {
             val amount = if (layout.paymentAmount.text.isNotEmpty())
                 layout.paymentAmount.text.toString().toInt() else layout.amountPicker.value
             if(totalDonated >= layout.progressBar.max)

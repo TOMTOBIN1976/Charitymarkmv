@@ -37,6 +37,7 @@ class Contribute : AppCompatActivity() {
         //var totalDonated = 0
         // Contribute buttom
         contributeLayout.contributeButton.setOnClickListener {
+            Timber.i("Contribute button pressed")
             val amount = if (contributeLayout.paymentAmount.text.isNotEmpty())
                 contributeLayout.paymentAmount.text.toString().toInt() else contributeLayout.amountPicker.value
             if(totalDonated >= contributeLayout.progressBar.max)

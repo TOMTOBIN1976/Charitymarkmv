@@ -2,7 +2,7 @@
     <string name="app_name">Contribution</string>
     <string name="contributeTitle">Charity Event App</string>
     <string name="contributeSubtitle">Please Give Generously</string>
-    <string name="contributeButton">contribute</string>
+    <string name="contributeButton">contribute!</string>
     <string name="paypal">PayPal</string>
     <string name="direct">Direct</string>
     <string name="amount">Amount</string>

@@ -48,7 +48,7 @@
         app:layout_constraintVertical_bias="0.114" />
 
     <Button
-        android:id="@+id/donateButton"
+        android:id="@+id/contributeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
