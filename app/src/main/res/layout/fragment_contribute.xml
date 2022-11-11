@@ -120,7 +120,7 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="349dp"
         android:layout_height="14dp"
-        android:layout_above="@+id/donateButton"
+        android:layout_above="@+id/contributeButton"
         android:layout_alignEnd="@+id/donateSubtitle"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="8dp"

@@ -39,6 +39,7 @@ class ContributeFragment : Fragment() {
             //Display the newly selected number to paymentAmount
             fragBinding.paymentAmount.setText("$newVal")
         }
+        setButtonListener(fragBinding)
         return root;
     }
 
