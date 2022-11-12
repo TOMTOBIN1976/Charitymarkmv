@@ -1,11 +1,12 @@
-package ie.wit.contribution
+package ie.wit.contribution.fragments
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
+import ie.wit.contribution.R
 import ie.wit.contribution.databinding.FragmentContributeBinding
 import ie.wit.contribution.main.ContributionApp
 import ie.wit.contribution.models.ContributionModel
@@ -20,6 +21,8 @@ class ContributeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         app = activity?.application as ContributionApp
+        //manage the Menu
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -65,6 +68,16 @@ class ContributeFragment : Fragment() {
                 app.contributionsStore.create(ContributionModel(paymentmethod = paymentmethod,amount = amount))
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_contribute, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+    // managing all menu options and fragment transactions under the navigation component
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item,
+            requireView().findNavController()) || super.onOptionsItemSelected(item)
     }
 
     override fun onDestroyView() {

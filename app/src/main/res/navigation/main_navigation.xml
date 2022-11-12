@@ -7,12 +7,22 @@
 
     <fragment
         android:id="@+id/contributeFragment"
-        android:name="ie.wit.contribution.ContributeFragment"
+        android:name="ie.wit.contribution.fragments.ContributeFragment"
         android:label="fragment_contribute"
-        tools:layout="@layout/fragment_contribute" />
+        tools:layout="@layout/fragment_contribute" >
+        <action
+            android:id="@+id/action_contributeFragment_to_reportFragment"
+            app:destination="@id/reportFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_enter_anim" />
+    </fragment>
     <fragment
         android:id="@+id/reportFragment"
-        android:name="ie.wit.contribution.ReportFragment"
+        android:name="ie.wit.contribution.fragments.ReportFragment"
         android:label="fragment_report"
-        tools:layout="@layout/fragment_report" />
+        tools:layout="@layout/fragment_report" >
+        <action
+            android:id="@+id/action_reportFragment_to_contributeFragment"
+            app:destination="@id/contributeFragment" />
+    </fragment>
 </navigation>
