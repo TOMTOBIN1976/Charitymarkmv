@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/contributeFragment"
         android:name="ie.wit.contribution.fragments.ContributeFragment"
-        android:label="fragment_contribute"
+        android:label="@string/action_contribute"
         tools:layout="@layout/fragment_contribute" >
         <action
             android:id="@+id/action_contributeFragment_to_reportFragment"
@@ -19,7 +19,7 @@
     <fragment
         android:id="@+id/reportFragment"
         android:name="ie.wit.contribution.fragments.ReportFragment"
-        android:label="fragment_report"
+        android:label="@string/action_report"
         tools:layout="@layout/fragment_report" >
         <action
             android:id="@+id/action_reportFragment_to_contributeFragment"
