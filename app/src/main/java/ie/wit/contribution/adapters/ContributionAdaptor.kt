@@ -7,7 +7,7 @@ import ie.wit.contribution.R
 import ie.wit.contribution.databinding.CardContributionBinding
 import ie.wit.contribution.models.ContributionModel
 
-class ContributionAdapter constructor(private var contributions: List<ContributionModel>)
+class ContributionAdapter constructor(private var contributions : List<ContributionModel>)
     : RecyclerView.Adapter<ContributionAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {

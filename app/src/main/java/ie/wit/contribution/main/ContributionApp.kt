@@ -11,7 +11,7 @@ class ContributionApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        // initialize the Timber library
+
         Timber.plant(Timber.DebugTree())
         contributionsStore = ContributionMemStore()
         Timber.i("Starting Contribution Application")

@@ -6,12 +6,16 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/contributeFragment"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/ic_menu_contribute"
             android:title="@string/action_contribute" />
         <item
             android:id="@+id/reportFragment"
             android:icon="@drawable/ic_menu_report"
             android:title="@string/action_report" />
+        <item
+            android:id="@+id/aboutusFragment"
+            android:icon="@drawable/ic_menu_aboutus"
+            android:title="@string/action_about" />
     </group>
 
     <item android:title="@string/group_communicate">
@@ -28,3 +32,4 @@
     </item>
 
 </menu>
+

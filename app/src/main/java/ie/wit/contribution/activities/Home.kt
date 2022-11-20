@@ -2,33 +2,64 @@ package ie.wit.contribution.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
+import androidx.navigation.*
+import androidx.navigation.ui.*
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import ie.wit.contribution.R
 import ie.wit.contribution.databinding.HomeBinding
 
-private lateinit var drawerLayout: DrawerLayout
-private lateinit var homeBinding : HomeBinding
-
 class Home : AppCompatActivity() {
 
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var homeBinding : HomeBinding
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //initialize drawerLayout
         homeBinding = HomeBinding.inflate(layoutInflater)
         setContentView(homeBinding.root)
         drawerLayout = homeBinding.drawerLayout
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        val fab: FloatingActionButton = findViewById(R.id.fab)
+        fab.setOnClickListener { view ->
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
+        }
 
         val navController = findNavController(R.id.nav_host_fragment)
-        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
+
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+
+        appBarConfiguration = AppBarConfiguration(setOf(
+
+            R.id.contributeFragment, R.id.reportFragment, R.id.aboutusFragment), drawerLayout)
+
+
+        setupActionBarWithNavController(navController, appBarConfiguration)
+
+        val navView = homeBinding.navView
+        navView.setupWithNavController(navController)
+
+//        navController.addOnDestinationChangedListener { _, destination, arguments ->
+//            when(destination.id) {
+//                R.id.reportFragment -> {
+//                    val argument = NavArgument.Builder().setDefaultValue(totalDonated).build()
+//                    destination.addArgument("totalDonated", argument)
+//
+//                }
+//            }
+//        }
     }
-    // handle Navigation up/back
+
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
-        return NavigationUI.navigateUp(navController, drawerLayout)
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 }
