@@ -40,7 +40,7 @@ class ContributeFragment : Fragment() {
         activity?.title = getString(R.string.action_contribute)
         setupMenu()
         contributeViewModel =
-            ViewModelProvider(this).get(contributeViewModel::class.java)
+            ViewModelProvider(this).get(ContributeViewModel::class.java)
         //val textView: TextView = root.findViewById(R.id.text_home)
         contributeViewModel.text.observe(viewLifecycleOwner, Observer {
             //textView.text = it
