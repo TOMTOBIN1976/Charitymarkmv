@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/contributeFragment"
-        android:name="ie.wit.contribution.fragments.ContributeFragment"
+        android:name="ie.wit.contribution.ui.contribute.ContributeFragment"
         android:label="@string/action_contribute"
         tools:layout="@layout/fragment_contribute" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/reportFragment"
-        android:name="ie.wit.contribution.fragments.ReportFragment"
+        android:name="ie.wit.contribution.ui.report.ReportFragment"
         android:label="@string/action_report"
         tools:layout="@layout/fragment_report" >
         <action
