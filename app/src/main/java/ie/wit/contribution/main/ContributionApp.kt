@@ -1,7 +1,7 @@
 package ie.wit.contribution.main
 
 import android.app.Application
-import ie.wit.contribution.models.ContributionMemStore
+import ie.wit.contribution.models.ContributionManager
 import ie.wit.contribution.models.ContributionStore
 import timber.log.Timber
 
@@ -12,7 +12,7 @@ class ContributionApp : Application() {
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
-        contributionsStore = ContributionMemStore()
+        //contributionsStore = ContributionMemStore()
         Timber.i("Starting Contribution Application")
     }
 }

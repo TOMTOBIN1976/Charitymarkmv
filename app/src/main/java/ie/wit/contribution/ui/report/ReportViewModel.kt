@@ -3,11 +3,21 @@ package ie.wit.contribution.ui.report
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import ie.wit.contribution.models.ContributionManager
+import ie.wit.contribution.models.ContributionModel
 
 class ReportViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is gallery Fragment"
+    private val contributionsList = MutableLiveData<List<ContributionModel>>()
+
+    val observableDonationsList: LiveData<List<ContributionModel>>
+        get() = contributionsList
+
+    init {
+        load()
     }
-    val text: LiveData<String> = _text
+
+    fun load() {
+        contributionsList.value = ContributionManager.findAll()
+    }
 }

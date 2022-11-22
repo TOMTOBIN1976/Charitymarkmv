@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/contributeFragment">
+    app:startDestination="@id/reportFragment">
 
     <fragment
         android:id="@+id/contributeFragment"
@@ -13,6 +13,8 @@
         <action
             android:id="@+id/action_contributeFragment_to_reportFragment"
             app:destination="@id/reportFragment"
+            app:popUpTo="@id/main_navigation"
+            app:popUpToInclusive="true"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_enter_anim" />
     </fragment>
@@ -25,4 +27,9 @@
             android:id="@+id/action_reportFragment_to_contributeFragment"
             app:destination="@id/contributeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/contributionDetailFragment"
+        android:name="ie.wit.contribution.ui.detail.ContributionDetailFragment"
+        android:label="fragment_contribution_detail"
+        tools:layout="@layout/fragment_contribution_detail" />
 </navigation>

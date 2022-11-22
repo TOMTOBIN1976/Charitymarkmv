@@ -7,7 +7,12 @@ import ie.wit.contribution.R
 import ie.wit.contribution.databinding.CardContributionBinding
 import ie.wit.contribution.models.ContributionModel
 
-class ContributionAdapter constructor(private var contributions : List<ContributionModel>)
+interface ContributionClickListener {
+    fun onContributionClick(contribution: ContributionModel)
+}
+
+class ContributionAdapter constructor(private var contributions: List<ContributionModel>,
+                                  private val listener: ContributionClickListener)
     : RecyclerView.Adapter<ContributionAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -19,17 +24,18 @@ class ContributionAdapter constructor(private var contributions : List<Contribut
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val contribution = contributions[holder.adapterPosition]
-        holder.bind(contribution)
+        holder.bind(contribution,listener)
     }
 
     override fun getItemCount(): Int = contributions.size
 
     inner class MainHolder(val binding : CardContributionBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(contribution: ContributionModel) {
-            binding.paymentamount.text = contribution.amount.toString()
-            binding.paymentmethod.text = contribution.paymentmethod
+        fun bind(contribution: ContributionModel, listener: ContributionClickListener) {
+            binding.contribution = contribution
             binding.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
+            binding.root.setOnClickListener { listener.onContributionnClick(contribution) }
+            binding.executePendingBindings()
         }
     }
 }

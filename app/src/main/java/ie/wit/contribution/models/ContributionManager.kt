@@ -8,7 +8,7 @@ internal fun getId(): Long {
     return lastId++
 }
 
-class ContributionMemStore : ContributionStore {
+object ContributionManager : ContributionStore {
 
     val contributions = ArrayList<ContributionModel>()
 
