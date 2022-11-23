@@ -29,7 +29,7 @@ class ReportFragment : Fragment(), ContributionClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
+        //setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -38,6 +38,7 @@ class ReportFragment : Fragment(), ContributionClickListener {
     ): View? {
         _fragBinding = FragmentReportBinding.inflate(inflater, container, false)
         val root = fragBinding.root
+
         setupMenu()
         fragBinding.recyclerView.layoutManager = LinearLayoutManager(activity)
 
@@ -64,22 +65,29 @@ class ReportFragment : Fragment(), ContributionClickListener {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.menu_report, menu)
             }
+
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 // Validate and handle the selected menu item
                 return NavigationUI.onNavDestinationSelected(menuItem,
                     requireView().findNavController())
+
             }     }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
-    private fun render(donationsList: List<ContributionModel>) {
-        fragBinding.recyclerView.adapter = ContributionAdapter(donationsList)
-        if (donationsList.isEmpty()) {
+    private fun render(contributionsList: List<ContributionModel>) {
+        fragBinding.recyclerView.adapter = ContributionAdapter(contributionsList)
+        if (contributionsList.isEmpty()) {
             fragBinding.recyclerView.visibility = View.GONE
             fragBinding.donationsNotFound.visibility = View.VISIBLE
         } else {
             fragBinding.recyclerView.visibility = View.VISIBLE
             fragBinding.donationsNotFound.visibility = View.GONE
         }
+    }
+
+    override fun onContributionClick(contribution: ContributionModel) {
+        val action = ReportFragmentDirections.actionReportFragmentToContributionDetailFragment(contribution.id)
+        findNavController().navigate(action)
     }
 
     override fun onResume() {

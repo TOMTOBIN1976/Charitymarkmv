@@ -10,7 +10,7 @@ internal fun getId(): Long {
 
 object ContributionManager : ContributionStore {
 
-    val contributions = ArrayList<ContributionModel>()
+    private val contributions = ArrayList<ContributionModel>()
 
     override fun findAll(): List<ContributionModel> {
         return contributions
@@ -28,7 +28,7 @@ object ContributionManager : ContributionStore {
     }
 
     fun logAll() {
-        Timber.v("** contributions List **")
+        Timber.v("** Contributions List **")
         contributions.forEach { Timber.v("Contribute ${it}") }
     }
 }

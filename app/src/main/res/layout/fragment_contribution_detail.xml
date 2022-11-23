@@ -6,7 +6,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.detail.DonationDetailFragment">
+    tools:context=".ui.detail.ContributionDetailFragment">
 
     <TextView
         android:id="@+id/textView4"
@@ -119,22 +119,22 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
-        android:id="@+id/editDonationButton"
+        android:id="@+id/editContributionButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Edit"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/deleteDonationButton"
+        app:layout_constraintEnd_toStartOf="@+id/deleteContributionButton"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/deleteDonationButton"
+        android:id="@+id/deleteContributionButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Delete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editDonationButton" />
+        app:layout_constraintStart_toEndOf="@+id/editContributionButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

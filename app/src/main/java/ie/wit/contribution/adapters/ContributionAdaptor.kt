@@ -34,7 +34,7 @@ class ContributionAdapter constructor(private var contributions: List<Contributi
         fun bind(contribution: ContributionModel, listener: ContributionClickListener) {
             binding.contribution = contribution
             binding.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
-            binding.root.setOnClickListener { listener.onContributionnClick(contribution) }
+            binding.root.setOnClickListener { listener.onContributionClick(contribution) }
             binding.executePendingBindings()
         }
     }

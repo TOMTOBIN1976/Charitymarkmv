@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.navArgs
 import ie.wit.contribution.R
 
 class ContributionDetailFragment : Fragment() {
@@ -15,18 +17,19 @@ class ContributionDetailFragment : Fragment() {
     }
 
     private lateinit var viewModel: ContributionDetailViewModel
+    private val args by navArgs<ContributionDetailFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_contribution_detail, container, false)
+
+        val view = inflater.inflate(R.layout.fragment_contribution_detail, container, false)
+
+        Toast.makeText(context,"Contribution ID Selected : ${args.contributionid}",Toast.LENGTH_LONG).show()
+
+        return view
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ContributionDetailViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }

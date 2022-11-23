@@ -19,7 +19,7 @@ import ie.wit.contribution.main.ContributionApp
 import ie.wit.contribution.models.ContributionModel
 import ie.wit.contribution.ui.report.ReportViewModel
 
-class DonateFragment : Fragment() {
+class ContributeFragment : Fragment() {
 
     var totalDonated = 0
     private var _fragBinding: FragmentContributeBinding? = null
