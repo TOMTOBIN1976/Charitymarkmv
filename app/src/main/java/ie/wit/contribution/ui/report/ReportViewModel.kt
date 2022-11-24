@@ -10,7 +10,7 @@ class ReportViewModel : ViewModel() {
 
     private val contributionsList = MutableLiveData<List<ContributionModel>>()
 
-    val observableDonationsList: LiveData<List<ContributionModel>>
+    val observableContributionsList: LiveData<List<ContributionModel>>
         get() = contributionsList
 
     init {

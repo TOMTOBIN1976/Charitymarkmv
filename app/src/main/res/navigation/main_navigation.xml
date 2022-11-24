@@ -13,10 +13,8 @@
         <action
             android:id="@+id/action_contributeFragment_to_reportFragment"
             app:destination="@id/reportFragment"
-            app:popUpTo="@id/main_navigation"
-            app:popUpToInclusive="true"
             app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_enter_anim" />
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/reportFragment"
@@ -25,11 +23,30 @@
         tools:layout="@layout/fragment_report" >
         <action
             android:id="@+id/action_reportFragment_to_contributeFragment"
-            app:destination="@id/contributeFragment" />
+            app:destination="@id/contributeFragment"
+            app:popUpTo="@id/main_navigation"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_reportFragment_to_contributionDetailFragment"
+            app:destination="@id/contributionDetailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="ie.wit.contribution.ui.about.AboutFragment"
+        android:label="@string/action_about"
+        tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/contributionDetailFragment"
         android:name="ie.wit.contribution.ui.detail.ContributionDetailFragment"
-        android:label="fragment_contribution_detail"
-        tools:layout="@layout/fragment_contribution_detail" />
+        android:label="Contribution Detail"
+        tools:layout="@layout/fragment_contribution_detail" >
+        <action
+            android:id="@+id/action_contributionDetailFragment_to_reportFragment"
+            app:destination="@id/reportFragment" />
+        <argument
+            android:name="contributionid"
+            app:argType="long" />
+    </fragment>
 </navigation>

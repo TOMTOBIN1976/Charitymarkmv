@@ -43,7 +43,7 @@ class ReportFragment : Fragment(), ContributionClickListener {
         fragBinding.recyclerView.layoutManager = LinearLayoutManager(activity)
 
         reportViewModel = ViewModelProvider(this).get(ReportViewModel::class.java)
-        reportViewModel.observableDonationsList.observe(viewLifecycleOwner, Observer {
+        reportViewModel.observableContributionsList.observe(viewLifecycleOwner, Observer {
                 donations ->
             donations?.let { render(donations) }
         })
@@ -75,7 +75,8 @@ class ReportFragment : Fragment(), ContributionClickListener {
     }
 
     private fun render(contributionsList: List<ContributionModel>) {
-        fragBinding.recyclerView.adapter = ContributionAdapter(contributionsList)
+        //fragBinding.recyclerView.adapter = ContributionAdapter(contributionsList)
+        fragBinding.recyclerView.adapter = ContributionAdapter(contributionsList,this)
         if (contributionsList.isEmpty()) {
             fragBinding.recyclerView.visibility = View.GONE
             fragBinding.donationsNotFound.visibility = View.VISIBLE

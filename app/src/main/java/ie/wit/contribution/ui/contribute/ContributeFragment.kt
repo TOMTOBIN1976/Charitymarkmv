@@ -108,8 +108,8 @@ class ContributeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         val reportViewModel = ViewModelProvider(this).get(ReportViewModel::class.java)
-        reportViewModel.observableDonationsList.observe(viewLifecycleOwner, Observer {
-            totalDonated = reportViewModel.observableDonationsList.value!!.sumOf { it.amount }
+        reportViewModel.observableContributionsList.observe(viewLifecycleOwner, Observer {
+            totalDonated = reportViewModel.observableContributionsList.value!!.sumOf { it.amount }
             fragBinding.progressBar.progress = totalDonated
             fragBinding.totalSoFar.text = getString(R.string.totalSoFar,totalDonated)
         })
