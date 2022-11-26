@@ -95,7 +95,7 @@ class ContributeFragment : Fragment() {
                 totalDonated += amount
                 layout.totalSoFar.text = getString(R.string.totalSoFar,totalDonated)
                 layout.progressBar.progress = totalDonated
-
+                donateViewModel.addDonation(ContributionModel(paymentmethod = paymentmethod,amount = amount))
             }
         }
     }
