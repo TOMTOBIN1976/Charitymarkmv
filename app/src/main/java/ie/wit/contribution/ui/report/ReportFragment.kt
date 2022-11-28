@@ -11,7 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import ie.wit.contribution.R
 import ie.wit.contribution.adapters.ContributionAdapter
@@ -19,6 +21,7 @@ import ie.wit.contribution.adapters.ContributionClickListener
 import ie.wit.contribution.databinding.FragmentReportBinding
 import ie.wit.contribution.main.ContributionApp
 import ie.wit.contribution.models.ContributionModel
+import ie.wit.contribution.utils.SwipeToDeleteCallback
 
 class ReportFragment : Fragment(), ContributionClickListener {
 
@@ -29,7 +32,6 @@ class ReportFragment : Fragment(), ContributionClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -44,8 +46,14 @@ class ReportFragment : Fragment(), ContributionClickListener {
 
         reportViewModel = ViewModelProvider(this).get(ReportViewModel::class.java)
         reportViewModel.observableContributionsList.observe(viewLifecycleOwner, Observer {
-                donations ->
-            donations?.let { render(donations) }
+        //        contributions ->
+        //    contributions?.let { render(contributions) }
+                contributions ->
+            contributions?.let {
+                render(contributions as ArrayList<ContributionModel>)
+                //hideLoader(loader)
+                //checkSwipeRefresh()
+            }
         })
 
         val fab: FloatingActionButton = fragBinding.fab
@@ -53,6 +61,20 @@ class ReportFragment : Fragment(), ContributionClickListener {
             val action = ReportFragmentDirections.actionReportFragmentToContributeFragment()
             findNavController().navigate(action)
         }
+        //setSwipeRefresh()
+        // SWIPE LEFT - DELETE
+        val swipeDeleteHandler = object : SwipeToDeleteCallback(requireContext()) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                //showLoader(loader,"Deleting Donation")
+                val adapter = fragBinding.recyclerView.adapter as ContributionAdapter
+                adapter.removeAt(viewHolder.adapterPosition)
+                //reportViewModel.delete(viewHolder.itemView.tag as String)
+                //hideLoader(loader)
+            }
+        }
+        val itemTouchDeleteHelper = ItemTouchHelper(swipeDeleteHandler)
+        itemTouchDeleteHelper.attachToRecyclerView(fragBinding.recyclerView)
+
         return root
     }
 
@@ -72,10 +94,11 @@ class ReportFragment : Fragment(), ContributionClickListener {
                     requireView().findNavController())
 
             }     }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
     }
 
-    private fun render(contributionsList: List<ContributionModel>) {
-        //fragBinding.recyclerView.adapter = ContributionAdapter(contributionsList)
+    //private fun render(contributionsList: List<ContributionModel>) {
+    private fun render(contributionsList: ArrayList<ContributionModel>) {
         fragBinding.recyclerView.adapter = ContributionAdapter(contributionsList,this)
         if (contributionsList.isEmpty()) {
             fragBinding.recyclerView.visibility = View.GONE
@@ -96,8 +119,8 @@ class ReportFragment : Fragment(), ContributionClickListener {
         reportViewModel.load()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _fragBinding = null
-    }
+    //override fun onDestroyView() {
+    //    super.onDestroyView()
+    //    _fragBinding = null
+    //}
 }

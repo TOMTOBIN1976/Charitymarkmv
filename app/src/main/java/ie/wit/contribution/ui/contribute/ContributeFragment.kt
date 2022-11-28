@@ -25,7 +25,7 @@ class ContributeFragment : Fragment() {
     private var _fragBinding: FragmentContributeBinding? = null
     // This property is only valid between onCreateView and onDestroyView.
     private val fragBinding get() = _fragBinding!!
-    private lateinit var donateViewModel: ContributeViewModel
+    private lateinit var contributeViewModel: ContributeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,8 +39,8 @@ class ContributeFragment : Fragment() {
         activity?.title = getString(R.string.action_contribute)
         setupMenu()
 
-        donateViewModel = ViewModelProvider(this).get(ContributeViewModel::class.java)
-        donateViewModel.observableStatus.observe(viewLifecycleOwner, Observer {
+        contributeViewModel = ViewModelProvider(this).get(ContributeViewModel::class.java)
+        contributeViewModel.observableStatus.observe(viewLifecycleOwner, Observer {
                 status -> status?.let { render(status) }
         })
 
@@ -95,7 +95,7 @@ class ContributeFragment : Fragment() {
                 totalDonated += amount
                 layout.totalSoFar.text = getString(R.string.totalSoFar,totalDonated)
                 layout.progressBar.progress = totalDonated
-                donateViewModel.addDonation(ContributionModel(paymentmethod = paymentmethod,amount = amount))
+                contributeViewModel.addContribution(ContributionModel(paymentmethod = paymentmethod,amount = amount))
             }
         }
     }

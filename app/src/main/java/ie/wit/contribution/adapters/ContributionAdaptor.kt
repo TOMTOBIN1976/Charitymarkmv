@@ -11,7 +11,8 @@ interface ContributionClickListener {
     fun onContributionClick(contribution: ContributionModel)
 }
 
-class ContributionAdapter constructor(private var contributions: List<ContributionModel>,
+class ContributionAdapter constructor(private var contributions: ArrayList<ContributionModel>,
+//class ContributionAdapter constructor(private var contributions: List<ContributionModel>,
                                   private val listener: ContributionClickListener)
     : RecyclerView.Adapter<ContributionAdapter.MainHolder>() {
 
@@ -37,5 +38,10 @@ class ContributionAdapter constructor(private var contributions: List<Contributi
             binding.root.setOnClickListener { listener.onContributionClick(contribution) }
             binding.executePendingBindings()
         }
+    }
+
+    fun removeAt(position: Int) {
+        contributions.removeAt(position)
+        notifyItemRemoved(position)
     }
 }

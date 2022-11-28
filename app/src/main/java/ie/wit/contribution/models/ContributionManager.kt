@@ -31,4 +31,8 @@ object ContributionManager : ContributionStore {
         Timber.v("** Contributions List **")
         contributions.forEach { Timber.v("Contribute ${it}") }
     }
+    // introduce delete option
+    override fun delete(id: Long) {
+        TODO("Not yet implemented")
+    }
 }
