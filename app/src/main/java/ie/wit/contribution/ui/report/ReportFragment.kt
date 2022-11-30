@@ -22,6 +22,7 @@ import ie.wit.contribution.databinding.FragmentReportBinding
 import ie.wit.contribution.main.ContributionApp
 import ie.wit.contribution.models.ContributionModel
 import ie.wit.contribution.utils.SwipeToDeleteCallback
+import ie.wit.contribution.utils.SwipeToEditCallback
 
 class ReportFragment : Fragment(), ContributionClickListener {
 
