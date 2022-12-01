@@ -7,7 +7,7 @@ import timber.log.Timber
 
 class ContributionApp : Application() {
 
-    lateinit var contributionsStore: ContributionStore
+    //lateinit var contributionsStore: ContributionStore
 
     override fun onCreate() {
         super.onCreate()
