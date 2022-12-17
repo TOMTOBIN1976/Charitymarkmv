@@ -8,6 +8,7 @@ plugins {
 }
 
 android {
+    namespace 'ie.wit.contribution'
     compileSdk 32
 
     defaultConfig {

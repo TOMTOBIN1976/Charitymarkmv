@@ -1,4 +1,4 @@
-package ie.wit.contribution.activities
+package ie.wit.contribution.ui.home
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,14 +8,13 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.*
 import androidx.navigation.ui.*
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import ie.wit.contribution.R
 import ie.wit.contribution.databinding.HomeBinding
 import ie.wit.contribution.databinding.NavHeaderBinding
 import ie.wit.contribution.ui.auth.LoggedInViewModel
 import androidx.lifecycle.Observer
 import com.google.firebase.auth.FirebaseUser
+import ie.wit.contribution.ui.auth.Login
 
 class Home : AppCompatActivity() {
 

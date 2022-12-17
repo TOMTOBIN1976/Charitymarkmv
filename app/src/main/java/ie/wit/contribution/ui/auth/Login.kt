@@ -1,25 +1,18 @@
-package ie.wit.contribution.activities
+package ie.wit.contribution.ui.auth
 
 import androidx.appcompat.app.AppCompatActivity
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 //import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import ie.wit.contribution.R
 import ie.wit.contribution.databinding.LoginBinding
-import ie.wit.contribution.ui.auth.LoginRegisterViewModel
-import ie.wit.contribution.utils.createLoader
-import ie.wit.contribution.utils.hideLoader
-import ie.wit.contribution.utils.showLoader
 import timber.log.Timber
 import androidx.lifecycle.Observer
+import ie.wit.contribution.ui.home.Home
 
 class Login : AppCompatActivity() {
 
