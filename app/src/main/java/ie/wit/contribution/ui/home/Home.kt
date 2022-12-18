@@ -1,19 +1,25 @@
 package ie.wit.contribution.ui.home
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.*
-import androidx.navigation.ui.*
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.firebase.auth.FirebaseUser
 import ie.wit.contribution.R
 import ie.wit.contribution.databinding.HomeBinding
 import ie.wit.contribution.databinding.NavHeaderBinding
 import ie.wit.contribution.ui.auth.LoggedInViewModel
-import androidx.lifecycle.Observer
-import com.google.firebase.auth.FirebaseUser
 import ie.wit.contribution.ui.auth.Login
 
 class Home : AppCompatActivity() {
@@ -44,14 +50,26 @@ class Home : AppCompatActivity() {
 
         val navView = homeBinding.navView
         navView.setupWithNavController(navController)
+
+//        navController.addOnDestinationChangedListener { _, destination, arguments ->
+//            when(destination.id) {
+//                R.id.reportFragment -> {
+//                    val argument = NavArgument.Builder().setDefaultValue(totalDonated).build()
+//                    destination.addArgument("totalDonated", argument)
+//
+//                }
+//            }
+//        }
     }
 
     public override fun onStart() {
         super.onStart()
         loggedInViewModel = ViewModelProvider(this).get(LoggedInViewModel::class.java)
         loggedInViewModel.liveFirebaseUser.observe(this, Observer { firebaseUser ->
-            if (firebaseUser != null)
-                updateNavHeader(loggedInViewModel.liveFirebaseUser.value!!)
+            if (firebaseUser != null) {
+                //val currentUser = loggedInViewModel.liveFirebaseUser.value
+                /*if (currentUser != null)*/ updateNavHeader(loggedInViewModel.liveFirebaseUser.value!!)
+            }
         })
 
         loggedInViewModel.loggedOut.observe(this, Observer { loggedout ->
@@ -72,10 +90,9 @@ class Home : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-    // Signout function
-    fun signOut() {
+
+    fun signOut(item: MenuItem) {
         loggedInViewModel.logOut()
-        //Launch Login activity and clear the back stack to stop navigating back to the Home activity
         val intent = Intent(this, Login::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)

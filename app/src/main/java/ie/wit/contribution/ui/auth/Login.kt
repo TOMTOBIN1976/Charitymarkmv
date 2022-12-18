@@ -1,18 +1,17 @@
 package ie.wit.contribution.ui.auth
 
-import androidx.appcompat.app.AppCompatActivity
-
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-//import androidx.appcompat.app.AppCompatActivity
 import ie.wit.contribution.R
 import ie.wit.contribution.databinding.LoginBinding
-import timber.log.Timber
-import androidx.lifecycle.Observer
 import ie.wit.contribution.ui.home.Home
+import timber.log.Timber
+
 
 class Login : AppCompatActivity() {
 
