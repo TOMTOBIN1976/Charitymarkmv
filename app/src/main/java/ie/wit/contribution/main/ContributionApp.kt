@@ -1,8 +1,6 @@
 package ie.wit.contribution.main
 
 import android.app.Application
-import ie.wit.contribution.models.ContributionManager
-import ie.wit.contribution.models.ContributionStore
 import timber.log.Timber
 
 class ContributionApp : Application() {

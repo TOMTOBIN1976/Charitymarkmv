@@ -111,7 +111,7 @@ class ReportFragment : Fragment(), ContributionClickListener {
     }
 
     override fun onContributionClick(contribution: ContributionModel) {
-        val action = ReportFragmentDirections.actionReportFragmentToContributionDetailFragment(contribution.id)
+        val action = ReportFragmentDirections.actionReportFragmentToContributionDetailFragment(contribution.uid!!)
         findNavController().navigate(action)
     }
 
