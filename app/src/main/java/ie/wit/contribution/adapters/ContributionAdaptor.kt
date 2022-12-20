@@ -12,7 +12,6 @@ interface ContributionClickListener {
 }
 
 class ContributionAdapter constructor(private var contributions: ArrayList<ContributionModel>,
-//class ContributionAdapter constructor(private var contributions: List<ContributionModel>,
                                   private val listener: ContributionClickListener)
     : RecyclerView.Adapter<ContributionAdapter.MainHolder>() {
 
@@ -28,20 +27,22 @@ class ContributionAdapter constructor(private var contributions: ArrayList<Contr
         holder.bind(contribution,listener)
     }
 
+    fun removeAt(position: Int) {
+        contributions.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
     override fun getItemCount(): Int = contributions.size
 
-    inner class MainHolder(val binding : CardContributionBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MainHolder(val binding : CardContributionBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(contribution: ContributionModel, listener: ContributionClickListener) {
+            binding.root.tag = contribution
             binding.contribution = contribution
             binding.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
             binding.root.setOnClickListener { listener.onContributionClick(contribution) }
             binding.executePendingBindings()
         }
-    }
-
-    fun removeAt(position: Int) {
-        contributions.removeAt(position)
-        notifyItemRemoved(position)
     }
 }

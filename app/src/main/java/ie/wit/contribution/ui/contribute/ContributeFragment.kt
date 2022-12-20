@@ -1,4 +1,4 @@
-package ie.wit.contribution.ui.donate
+package ie.wit.contribution.ui.contribute
 
 import android.os.Bundle
 import android.view.*
@@ -11,20 +11,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-
 import androidx.navigation.ui.NavigationUI
-
-
-
-
 import ie.wit.contribution.R
 import ie.wit.contribution.databinding.FragmentContributeBinding
 import ie.wit.contribution.models.ContributionModel
 import ie.wit.contribution.ui.auth.LoggedInViewModel
-import ie.wit.contribution.ui.contribute.ContributeViewModel
 import ie.wit.contribution.ui.report.ReportViewModel
-
-
 import timber.log.Timber
 
 class ContributeFragment : Fragment() {
